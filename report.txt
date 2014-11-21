@@ -1,0 +1,6 @@
+TASK 1
+1. Jeg er en datalogi studerende.
+2. Jeg har haft kurset "introduktion til programmering" hvor vi fik gennemgået SML, ligeledes har jeg haft faget
+"Maskinarkitektur" hvor vi fik gennemgået MIPS. Dog føler jeg at jeg gerne ville have opfrisket begge emner/sprog.
+3. Mine forventninger er, at jeg vil få en større forståelse inden for kompilere, hvordan de virker og overætter til
+maskinsprog som computeren forstår.
