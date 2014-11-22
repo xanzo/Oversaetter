@@ -1,0 +1,12 @@
+fun int add(int j) = j + 3
+
+fun int readInt (int m) = read(int)
+
+fun [int] BuildArray (int k) = map(add,iota(k))
+
+fun [int] main () =
+	let n = read(int) in
+	let x = 	
+		let k =  map(readInt , iota(n)) in 
+			map(BuildArray , k)
+	in x

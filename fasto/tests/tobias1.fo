@@ -1,0 +1,11 @@
+fun int sum([int] xs) =
+	reduce (add, 0, xs)
+
+fun int add (int x, int y) =
+	x + y
+
+fun int main () =
+	let x = read(int) in
+	let y = sum(iota(x)) in
+	let a = write(y) in
+	27
