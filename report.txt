@@ -4,3 +4,12 @@ TASK 1
 "Maskinarkitektur" hvor vi fik gennemgået MIPS. Dog føler jeg at jeg gerne ville have opfrisket begge emner/sprog.
 3. Mine forventninger er, at jeg vil få en større forståelse inden for kompilere, hvordan de virker og overætter til
 maskinsprog som computeren forstår.
+
+TASK 2
+Jeg startede med at dele opgaven op i mindre stykker.
+Det første var at lave en funktion der fik et tal og lagde 3 til dette tal.
+Derefter lavede jeg en funktion til at læse et tal som funktionen får, så det kan
+bruges til array.
+Så lavede jeg selve arrayet. Dette var klart det sværeste. Her brugte jeg værdien k,
+som jeg definerede i main funktionen. Funktionen laver et array af længde k-1 med
+værdierne {3,4,...,(k-1) +3}.
