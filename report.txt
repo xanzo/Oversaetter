@@ -10,6 +10,12 @@ Jeg startede med at dele opgaven op i mindre stykker.
 Det første var at lave en funktion der fik et tal og lagde 3 til dette tal.
 Derefter lavede jeg en funktion til at læse et tal som funktionen får, så det kan
 bruges til array.
-Så lavede jeg selve arrayet. Dette var klart det sværeste. Her brugte jeg værdien k,
+Så lavede jeg selve arrayet. Dette brugte jeg en del tid på. Her brugte jeg værdien k,
 som jeg definerede i main funktionen. Funktionen laver et array af længde k-1 med
 værdierne {3,4,...,(k-1) +3}.
+Herefter lavede jeg en funktion "sum" som får 2 værdier og lægger disse sammen. Hertil lavede jeg en anden funktion
+som brugte sunktionen "sum". Jeg brugte reducer, dog hvor jeg reducerer med 0, så den ændrer ikke tallet. Så bruger
+jeg sum med x, så jeg får lagt tallene i en række sammen.
+Del 4 af TASK 2 lavede jeg med 2 if then else sætninger. Her brugte jeg de givne informationer. Første if then sætning
+tjekker om p er større end 2, er den ikke det skal y bruges. Hvis p er større end 2 tjekkes om p er mindre end n.
+Uanset hvad svaret er bruger jeg map til en funktion "WriteInt" til at få svaret skrevet ud.
