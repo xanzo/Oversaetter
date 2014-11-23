@@ -19,3 +19,11 @@ jeg sum med x, så jeg får lagt tallene i en række sammen.
 Del 4 af TASK 2 lavede jeg med 2 if then else sætninger. Her brugte jeg de givne informationer. Første if then sætning
 tjekker om p er større end 2, er den ikke det skal y bruges. Hvis p er større end 2 tjekkes om p er mindre end n.
 Uanset hvad svaret er bruger jeg map til en funktion "WriteInt" til at få svaret skrevet ud.
+
+TASK 3
+I denne opgave havde jeg store problemer. Jeg følte ikke at jeg havde nok viden omkring emnet til at kunne løse opgaven.
+Specielt parse delen havde jeg kæmpe problemer med, da jeg ikke vidste hvad jeg skulle skrive i denne. Efter lang tid
+søgen måtte jeg desværre give op og derfor er parser næsten ikke blevet redigeret.
+Først lavede jeg lexer.lex. Her indsatte jeg de gramma regler som ikke var implementeret ved start. Jeg havde nogle
+problemer ved implementationen af nogle af reglerne, især "Var" med navnet var svær og brugte en hel del tid!
+Efter lang tid, og noget hjælp, fik jeg dog implementeret alle regler så det så nogenlunde fornuftigt ud.

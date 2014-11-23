@@ -1,0 +1,25 @@
+%{
+
+open FEIEF;
+
+%}
+
+%token FALSE EOF
+
+%start Prog
+
+%type <FEIEF.Expr> Prog
+
+%left FORALL
+%left EXISTS
+%left OR
+%left AND
+
+%right IMPLIES
+
+%%
+
+Prog : FALSE EOF { FEIEF.False }
+;
+
+%%
