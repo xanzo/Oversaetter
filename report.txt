@@ -14,7 +14,7 @@ Herefter lavede jeg en funktion "sum" som får 2 værdier og lægger disse sammen. 
 som brugte funktionen "sum".
 Del 4 af TASK 2 lavede jeg med 2 if then else sætninger hvor jeg brugte de givne informationer.
 Første if then sætning tjekker om p er større end 2. Hvis p er større end 2 tjekkes om p er mindre end n.
-Uanset hvad svaret er bruger jeg map til en funktion "WriteInt" til at få svaret skrevet ud.
+Uanset hvad svaret er, bruger jeg map til en funktion "WriteInt" til at få svaret skrevet ud.
 
 TASK 3
 I denne opgave havde jeg store problemer. Jeg følte ikke at jeg havde nok viden omkring emnet til at kunne løse opgaven.
