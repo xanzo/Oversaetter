@@ -1,0 +1,18 @@
+%{
+
+open FEIEF;
+
+%}
+
+%token FALSE EOF
+
+%start Prog
+
+%type <FEIEF.Expr> Prog
+
+%%
+
+Prog : FALSE EOF { FEIEF.False }
+;
+
+%%
