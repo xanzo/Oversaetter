@@ -14,8 +14,8 @@ rule Token = parse
 	| `@`  	{ Parser.FORALL }
 	| `#`   { Parser.EXISTS }
 	| `.`   { Parser.DOT }
-	| `(`	{ Parser.PARENTHESES }
-	| `)`	{ Parser.PARENTHESES }
+	| `(`	{ Parser.LPAR }
+	| `)`	{ Parser.RPAR }
 	| `0`   { Parser.FALSE }
 	| `1`   { Parser.TRUE }
 	| eof   { Parser.EOF }
