@@ -19,7 +19,13 @@ open FEIEF;
 
 %%
 
-Prog : FALSE EOF { FEIEF.False }
+Prog : EXP EOF { $1 }
+;
+
+Exp : Exp OR Exp    { Or ($1, $3) }
+    | NOT Exp       { Not ($2) }
+    | LPAR Exp RPAR { ... }
+    | ...
 ;
 
 %%
