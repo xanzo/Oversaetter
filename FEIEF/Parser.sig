@@ -13,6 +13,6 @@ datatype token =
   | OR
   | RPAR
   | TRUE
-  | VAR of STRING
+  | VAR of string
 end;
 
