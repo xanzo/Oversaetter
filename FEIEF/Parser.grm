@@ -4,30 +4,35 @@ open FEIEF;
 
 %}
 
-%token NOT OR AND IMPLIES FORALL EXISTS DOT LPAR RPAR FALSE TRUE EOF
-%token <STRING> VAR
+%token FALSE TRUE AND OR LPAR RPAR EOF
+%token FORALL EXISTS DOT IMPLIES NOT
+%token <string> VAR
+
+%nonassoc forall exists
+%right IMPLIES
+%left AND OR
+%nonassoc NOT
 
 %start Prog
 
 %type <FEIEF.Expr> Prog
 %type <FEIEF.Exp> Expr
 
-%nonassoc FORALL
-%nonassoc EXISTS
-%right IMPLIES
-%left AND OR
-%nonassoc NOT
-
 %%
 
 Prog : Expr EOF { $1 }
 ;
 
-Expr : Expr OR Expr		{ Or ($1, $3) }
-	| Expr AND Expr		{ And ($1, $3) }
-    | NOT Expr			{ Not ($2) }
-    | LPAR Expr RPAR 	{ LPAR $1 RPAR }
-    | Expr IMPLIES Expr	{ IMPLIES ($1, $3) }
+Expr : FALSE								{ FALSE}
+	| True									{ True }
+	| Var 									{ Var $1 }
+	| FORALL Var DOT Expr %prec forall		{ Forall($2, $4) }
+	| EXISTS VAR DOT Expr %prec exists		{ Exists($2, $4) }
+	| Expr AND Expr							{ And ($1, $3) }
+	| Expr OR Expr							{ Or ($1, $3) }
+	| NOT Expr								{ Not ($2) }
+	| Expr IMPLIES Expr						{ Implies ($1, $3) }
+	| LPAR Expr RPAR						{ $2 }
 ;
 
 %%
