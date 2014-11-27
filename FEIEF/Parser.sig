@@ -16,3 +16,5 @@ datatype token =
   | VAR of string
 end;
 
+val Prog :
+  (Lexing.lexbuf -> token) -> Lexing.lexbuf -> FEIEF.Expr;

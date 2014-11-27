@@ -16,17 +16,17 @@ open FEIEF;
 %start Prog
 
 %type <FEIEF.Expr> Prog
-%type <FEIEF.Exp> Expr
+%type <FEIEF.Expr> Expr
 
 %%
 
 Prog : Expr EOF { $1 }
 ;
 
-Expr : FALSE								{ FALSE}
+Expr : FALSE								{ False }
 	| True									{ True }
-	| Var 									{ Var $1 }
-	| FORALL Var DOT Expr %prec forall		{ Forall($2, $4) }
+	| VAR 									{ Var $1 }
+	| FORALL VAR DOT Expr %prec forall		{ Forall($2, $4) }
 	| EXISTS VAR DOT Expr %prec exists		{ Exists($2, $4) }
 	| Expr AND Expr							{ And ($1, $3) }
 	| Expr OR Expr							{ Or ($1, $3) }
