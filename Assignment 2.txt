@@ -1,0 +1,18 @@
+Exercise 1
+1a) call-by-value er x = 3 og y = 1.
+Det er disse værdier der bliver kaldt og bliver ikke overskrevet noget sted
+1b) ?
+1c) call-by-value-result bliver r = (4,2,7), x = 3, y = 1.
+kalder f med (3,1,3). a = 1 + 3 = 4, b = 3 - 1 = 2, c = 3 + 4 = 7. f returnerer (4,2,7).
+x er y er stadig det samme. x = 3, og y = 1.
+
+Exercise 2
+2a) static scoping:
+f(3) ville printe 6, eftersom global x = 4, derfor kaldes h(y) hvor x bliver = y + 2, hvor y = 4, derefter kaldes g() der printer.
+f(5) ville printe 6, eftersom global x = 4, derfor kaldes h(y) hvor x bliver = y + 2, hvor y = 4, derefter kaldes g() der printer.
+ELLER <-------------------------------------------
+ville printe 4 eftersom global x = 4
+ville printe 4 eftersom global x = 4
+2b) dynamic scoping:
+f(3) ville printe 3, eftersom x = 3 derfor kaldes g() som printer x.
+f(5) ville printe 7, eftersom h(y) kaldes hvor x bliver til y + 2, hvor y = 5, derefter kaldes g() der printer.
