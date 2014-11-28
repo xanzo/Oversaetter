@@ -100,6 +100,14 @@ and checkExp ftab vtab (exp : In.Exp)
          in (Int,
              Out.Minus (e1_dec, e2_dec, pos))
          end
+		
+	| In.Times (e1, e2, pos)
+      => let val (t1, e1_dec) = checkExp ftab vtab e1
+			 val (t2, e2_dec) = checkExp ftab vtab e2
+         in if (t1 = Int andalso t2 = Int )
+			then (Int, Out.Times(e1_dec, e2_dec, pos))
+			else raise Error ("Argument of multiplication not an Int!", pos)
+		end
 
     (* The types for e1, e2 must be the same. The result is always a Bool. *)
     | In.Equal (e1, e2, pos)

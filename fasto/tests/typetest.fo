@@ -1,0 +1,12 @@
+
+fun int main() = let x = read(int) in
+if x == 33 then c else x + 3
+
+
+fun bool f(bool b, int i) = if(b) then (i == 0) else (i == 1)
+fun bool main() = let arr = {1, 2, 3} in
+reduce(f, (1==1), arr)
+
+
+fun [int] main() = let z = { 1, 2, chr(3) } in
+{ 1, 2, 3 }
