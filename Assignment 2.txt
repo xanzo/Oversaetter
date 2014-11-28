@@ -1,5 +1,5 @@
 Exercise 1
-1a) call-by-value er x = 3 og y = 1.
+1a) call-by-value er r = (3,1,3), x = 3 og y = 1.
 Det er disse værdier der bliver kaldt og bliver ikke overskrevet noget sted
 1b) ?
 1c) call-by-value-result bliver r = (4,2,7), x = 3, y = 1.
