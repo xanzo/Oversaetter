@@ -1,0 +1,12 @@
+EXERCISE 1
+
+a = list(int)
+b = int
+
+	  *
+	  |
+   -------
+   |	 |
+  list	list
+   |	 |
+  int	int

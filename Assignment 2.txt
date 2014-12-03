@@ -55,12 +55,39 @@ scan: (f, e, { a1, a2, ... }) = { e, f(e, a1), f(f(e, a1), a2), ... }
 
 Exercise 4
 4a)
-Hvis SML skulle kunne lave dynamic scoping, skulle man kunne lav en værdi x uden at definere typen.
-Derved kunne man lave et program som ændrede værdien x i hver funktion,
-og en funktion der blot printede x + 1.
-Altså ville man kunne lave en værdi x hvor x = 3, og printe denne + 1 = 4.
-En anden funktion kunne have x = "this is a string", som er en streng.
-Den anden funktion ville derved give en fejl, eftersom man ikke kan lægge 1 til en streng.
-Dog kræver dette at x kan være både streng og Int, hvilket ikke kan lade sig gøre i SML.
+Hvis man skal implementere dynamic scoping skal man kalde med vtab der bliver brugt i EvalExp.
+Dette kan man dog ikke, da denne kalder CallFun der ikke kan tage imod et vtab,
+men selv genererer tomme variable. Derfor skal man i stedet for at kalde CallFun,
+skal man blot kalde CallFunWithVtable.
+Man kan ændre ved:
+evalExp ( Apply(fid, args, pos), vtab, ftab ) = ... callFunWithVtable(f, evargs, vtab, ftab, pos)
 
 4b)
+ |  evalFunArg (Lambda (rettype, params, body, fpos), vtab, ftab, callpos) =
+	
+        NONE   => raise Error("Function "^fid^" is not in SymTab!", callpos)
+      | SOME f => (fn aargs => callFunwithVtable(f, aargs, vtab, ftab, callpos), getFunRTP f)
+ 
+ 
+ 
+ 
+ 
+ (* evalFunArg takes as argument a FunArg, a vtable, an ftable, and the
+position where the call is performed.
+
+It returns a pair of two values: an anonymous SML function, and the
+return type of the FunArg.  The anonymous function that is returned
+takes a single argument - a list of arguments that should be applied
+to the function.  This allows us to evaluate a FunArg once, then call
+it several times in a loop.
+ *)
+and evalFunArg (FunName fid, vtab, ftab, callpos) =
+    let
+      val fexp = SymTab.lookup fid ftab
+    in
+      case fexp of
+        NONE   => raise Error("Function "^fid^" is not in SymTab!", callpos)
+      | SOME f => (fn aargs => callFun(f, aargs, ftab, callpos), getFunRTP f)
+    end
+	
+callFunWithVtable (FunDec (fid, rtp, fargs, body, pdcl), aargs, vtab, ftab, pcall)
