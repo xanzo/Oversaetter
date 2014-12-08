@@ -1,12 +1,32 @@
 EXERCISE 1
 
-a = list(int)
-b = int
 
-	  *
-	  |
-   -------
-   |	 |
-  list	list
+	  *					   *
+	  |					   |
+   -------			  ----------
+   |	 |			  |		   |
+  list	list		alpha	 beta
    |	 |
   int	int
+  
+  
+  
+		  *
+		  |
+	 -------------
+	|	  |		  |
+  list	list	beta
+	|	  |
+  int	alpha
+	
+ list(int), list(aplha), beta
+ 
+ 		  *
+		  |
+	 -------------
+	|	  |		  |
+  list	list  --- *
+	|	  |	 /	  |
+  int	alpha	beta
+  
+ list(int), list(aplha), struct(beta)
