@@ -67,6 +67,19 @@ evalExp ( Apply(fid, args, pos), vtab, ftab ) = ... callFunWithVtable(f, evargs,
 	
         NONE   => raise Error("Function "^fid^" is not in SymTab!", callpos)
       | SOME f => (fn aargs => callFunwithVtable(f, aargs, vtab, ftab, callpos), getFunRTP f)
+	  
+	  
+	  
+	evalFunArg (FunName fid, vtab, ftab, callpos) =
+		let
+			val fexp = SymTab.lookup fid ftab
+		in
+			case fexp of
+			NONE   => raise Error("Function "^fid^" is not in SymTab!", callpos)
+		| 	SOME f => (fn aargs => callFun(f, aargs, ftab, callpos), getFunRTP f)
+		end
+  | evalFunArg (Lambda (rettype, params, body, fpos), vtab, ftab, callpos) =
+			(fn aargs => callFunwithVtable(rettype, params, body, fpos, aargs, vtab, ftab, callpos), getFunRTP aargs)
  
  
  
