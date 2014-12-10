@@ -46,17 +46,16 @@ Den kan køre programmet, så længe x ikke er 33. ellers vil den returnere en Int 
 Hvis man taster 33 ind vil den prøve at returnere c som er en char, og der vil komme type fejl
 
 3b)
-filter: (f,{ a1, a2, ... }) = { ai | ai ? { a1, a2, ... } ? f(ai) is true }
--Tjek om typerne er korrekte.
--Tjek om ai findes i listen {a1, a2, ...}.
--Lav en liste med de steder hvor ai findes i den oprindelige liste.
+filter: (a -> bool) * [a] -> [a]
+Filter skal tjekke om første element er en funktion af et argument af typen t, som
+skal give en sandhedsresultat(boolian).
+At andet argument også er af typen t.
 
-scan: (f, e, { a1, a2, ... }) = { e, f(e, a1), f(f(e, a1), a2), ... }
-(a * a -> a) * a * [a] ? [a]
--Tjek om typerne er korrekte.
--Brug funktionen på alle elementer i listen.
--Starter på plads e( se ovenstående beskrivelse af scan) i listen.
--Beregner alle elementer i listen fra e og frem.
+scan: (a * a -> a) * a * [a] -> [a]
+Scan skal tjekke at første element er en funktion af to argumenter som
+begge har samme type t.
+At andet argument har typen t.
+At tredje argument har typen Array t
 
 Exercise 4
 4a)
