@@ -1,35 +1,26 @@
 EXERCISE 1
 
-
-	  *					   *
-	  |					   |
-   -------			  ----------
-   |	 |			  |		   |
-  list	list		alpha	 beta
-   |	 |
-  int	int
+				  (1,1)		  (6,6)
+					*			*
+					|			|
+				 ------		  ------
+				|	   |	 |		|
+			  list	  list	 |		|
+			  (2,2)	 (3,3)	 |		|
+				|	   | ____|		|
+			  int	 alpha		  beta
+			 (4,4)	(5,5) 		  (7,7)
   
-  
-  
-		  *
-		  |
-	 -------------
-	|	  |		  |
-  list	list	beta
-	|	  |
-  int	alpha
-	
- list(int), list(aplha), beta
- 
- 		  *
-		  |
-	 -------------
-	|	  |		  |
-  list	list  --- *
-	|	  |	 /	  |
-  int	alpha	beta
-  
- list(int), list(aplha), struct(beta)
+	Rule 4:		  (1,1)		  (1,6)
+					*			*
+					|			|
+				 ------		  ------
+				|	   |	 |		|
+			  list	  list	 |		|
+			  (2,2)	 (3,3)	 |		|
+				|	   | ____|		|
+			  int	 alpha		  beta
+			 (4,4)	(5,5) 		  (7,7)
  
  
 EXERCISE 2
