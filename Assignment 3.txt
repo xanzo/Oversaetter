@@ -19,8 +19,20 @@ EXERCISE 1
 			  list	  list	 |		|
 			  (2,2)	 (3,3)	 |		|
 				|	   | ____|		|
-			  int	 alpha		  beta
-			 (4,4)	(5,5) 		  (7,7)
+			   int	 alpha		  beta
+	Rule 3:	 (4,4)	(2,5) 		  (3,7)
+			 
+	list(int), list(list(int)), list(int), list(list(int))
+			 
+							*
+							|
+				 ------------------------
+				|	   |		 |		 |
+			  list	  list		list	list
+				|	   | 		 |		 |
+			  int	  list		int		list
+					   |				 |
+					  int				int
  
  
 EXERCISE 2
@@ -45,3 +57,54 @@ while (b != 0) && (a/b != 0) {
                  else { b := b - a }
     }
 
+t1 := v
+t2 := w
+t3 := 0
+LABEL l_1 
+	IF t2 != t3 THEN l_2 ELSE l_f
+LABEL l_2
+	IF t1 / t2 != t3 THEN l_t ELSE l_f
+LABEL l_t
+	IF t2 < t1
+	THEN t1 = t1 - t2
+	ELSE t2 = t2 - t1
+	GOTO LABEL t_1
+LABEL l_f
+
+2c)
+1. rd := rs == rt
+2. rd := ! r
+
+1:
+beq rs, rt, ltrue
+addi rd, rd, 0
+ltrue
+	addi rd, rd, 1
+	
+2:
+beq r, 0, ltrue
+addi rd, rd, 0
+ltrue
+	addi rd, rd, 1
+	
+
+EXERCISE 3
+gcd(a,b) {
+1:  LABEL start
+2:  IF a < b THEN next ELSE swap
+3:  LABEL swap
+4:  t := a
+5:  a := b
+6:  b := t
+7:  LABEL next
+8:  z := 0
+9:  b := b mod a
+10: IF b = z THEN end ELSE start
+11: LABEL end
+12: RETURN a
+   }
+   
+3a)
+ i	 |	succ[i]	 |	gen[i]	 |	kill[i]
+ ======================================
+ 1	 |	  
