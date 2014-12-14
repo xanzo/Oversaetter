@@ -1,0 +1,85 @@
+Exercise 1
+1a)
+x = 3
+y = 1
+a = x = 3
+b = y = 1
+c = x = 3
+a = b + c = 1 + 3 = 4
+b = c - b = 3 - 1 = 2
+c = c + a = 3 + 4 = 7
+r = a + b + c = 4 + 2 + 7 = 13
+call-by-value er r = 13, x = 3 og y = 1.
+
+1b)
+x = 3
+y = 1
+a = b + c = 1 + 3 = 4
+b = c - b = 4 - 1 = 3
+c = c + a = 4 + 4 = 8
+r = a + b + c = 8 + 3 + 8 = 19
+call-by-reference ville printe r = 19, x = 8, y = 3.
+
+1c)
+x = 3
+y = 1
+a = b + c = 1 + 3 = 4
+b = c - b = 4 - 1 = 3
+c = c + a = 4 + 4 = 8
+r = a + b + c = 8 + 3 + 8 = 19
+call-by-value-result bliver r = 19, x = 3, y = 1.
+
+
+Exercise 2
+2a) static scoping:
+f(3) ville printe 6, eftersom global x = 4, derfor kaldes h(y) hvor x bliver = y + 2,
+hvor y = 4, derefter kaldes g() der printer.
+f(5) ville printe 7, eftersom global x = 4, derfor kaldes h(y) hvor x bliver = y + 2,
+hvor y = x fra f(x) = 5, derefter kaldes g() der printer.
+
+2b) dynamic scoping:
+f(3) ville printe 3, eftersom x = 3 derfor kaldes g() som printer x.
+f(5) ville printe 7, eftersom h(y) kaldes hvor x bliver til y + 2, hvor y = 5,
+derefter kaldes g() der printer.
+
+
+Exercise 3
+3a)
+fun int main() = let x = read(int) in
+				 if x == 33 then ’c’ else x + 3
+
+Den kan køre programmet, så længe x ikke er 33. Ellers vil den returnere en Int hvilket er korrekt.
+Hvis man taster netop 33 ind vil den prøve at returnere c som er en char, og der vil komme type fejl
+
+3b)
+filter: (a -> bool) * [a] -> [a]
+Filter skal tjekke om første element er en funktion af et argument af typen t, som
+skal give en sandhedsresultat(boolian).
+At andet argument også er af typen t.
+
+scan: (a * a -> a) * a * [a] -> [a]
+Scan skal tjekke at første element er en funktion af to argumenter som
+begge har samme type t.
+At andet argument har typen t.
+At tredje argument har typen Array t
+
+Exercise 4
+4a)
+Hvis man skal implementere dynamic scoping skal man kalde med vtab der bliver brugt i EvalExp.
+Dette kan man dog ikke, da denne kalder CallFun der ikke kan tage imod et vtab,
+men selv genererer tomme variable. Derfor skal man i stedet for at kalde CallFun,
+skal man blot kalde CallFunWithVtable.
+Man kan ændre ved:
+evalExp ( Apply(fid, args, pos), vtab, ftab ) = ... callFunWithVtable(f, evargs, vtab, ftab, pos)
+
+4b)
+	evalFunArg (FunName fid, vtab, ftab, callpos) =
+		let
+			val fexp = SymTab.lookup fid ftab
+		in
+			case fexp of
+			NONE   => raise Error("Function "^fid^" is not in SymTab!", callpos)
+		| 	SOME f => (fn aargs => callFun(f, aargs, ftab, callpos), getFunRTP f)
+		end
+  | evalFunArg (Lambda (rettype, params, body, fpos), vtab, ftab, callpos) =
+			(fn aargs => callFunwithVtable(rettype, params, body, fpos, aargs, vtab, ftab, callpos), getFunRTP aargs)
