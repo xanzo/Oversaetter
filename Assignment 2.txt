@@ -48,8 +48,8 @@ Exercise 3
 fun int main() = let x = read(int) in
 				 if x == 33 then ’c’ else x + 3
 
-Den kan køre programmet, så længe x ikke er 33. ellers vil den returnere en Int hvilket er korrekt.
-Hvis man taster 33 ind vil den prøve at returnere c som er en char, og der vil komme type fejl
+Den kan køre programmet, så længe x ikke er 33. Ellers vil den returnere en Int hvilket er korrekt.
+Hvis man taster netop 33 ind vil den prøve at returnere c som er en char, og der vil komme type fejl
 
 3b)
 filter: (a -> bool) * [a] -> [a]
@@ -73,13 +73,6 @@ Man kan ændre ved:
 evalExp ( Apply(fid, args, pos), vtab, ftab ) = ... callFunWithVtable(f, evargs, vtab, ftab, pos)
 
 4b)
- |  evalFunArg (Lambda (rettype, params, body, fpos), vtab, ftab, callpos) =
-	
-        NONE   => raise Error("Function "^fid^" is not in SymTab!", callpos)
-      | SOME f => (fn aargs => callFunwithVtable(f, aargs, vtab, ftab, callpos), getFunRTP f)
-	  
-	  
-	  
 	evalFunArg (FunName fid, vtab, ftab, callpos) =
 		let
 			val fexp = SymTab.lookup fid ftab
@@ -90,27 +83,3 @@ evalExp ( Apply(fid, args, pos), vtab, ftab ) = ... callFunWithVtable(f, evargs,
 		end
   | evalFunArg (Lambda (rettype, params, body, fpos), vtab, ftab, callpos) =
 			(fn aargs => callFunwithVtable(rettype, params, body, fpos, aargs, vtab, ftab, callpos), getFunRTP aargs)
- 
- 
- 
- 
- 
- (* evalFunArg takes as argument a FunArg, a vtable, an ftable, and the
-position where the call is performed.
-
-It returns a pair of two values: an anonymous SML function, and the
-return type of the FunArg.  The anonymous function that is returned
-takes a single argument - a list of arguments that should be applied
-to the function.  This allows us to evaluate a FunArg once, then call
-it several times in a loop.
- *)
-and evalFunArg (FunName fid, vtab, ftab, callpos) =
-    let
-      val fexp = SymTab.lookup fid ftab
-    in
-      case fexp of
-        NONE   => raise Error("Function "^fid^" is not in SymTab!", callpos)
-      | SOME f => (fn aargs => callFun(f, aargs, ftab, callpos), getFunRTP f)
-    end
-	
-callFunWithVtable (FunDec (fid, rtp, fargs, body, pdcl), aargs, vtab, ftab, pcall)
