@@ -1,0 +1,105 @@
+EXERCISE 3
+gcd(a,b) {
+1:  LABEL start
+2:  IF a < b THEN next ELSE swap
+3:  LABEL swap
+4:  t := a
+5:  a := b
+6:  b := t
+7:  LABEL next
+8:  z := 0
+9:  b := b mod a
+10: IF b = z THEN end ELSE start
+11: LABEL end
+12: RETURN a
+   }
+   
+3a)
+ i   |  succ[i]   |  kill[i]   |  gen[i]  |
+ ==========================================
+ 1   |    2       |   {ø}      |    {ø}   |
+ 2   |   7,3      |    {ø}     |    a,b   |
+ 3   |    4       |   {ø}      |    {ø}   |
+ 4   |    5       |    t       |     a    |
+ 5   |    6       |    a       |     b    |
+ 6   |    7       |    b       |     t    |
+ 7   |    8       |   {ø}      |    {ø}   |
+ 8   |    9       |     z      |    {ø}   |
+ 9   |    10      |    b       |    a,b   |
+ 10  |   11,1     |   {ø}      |    b,z   |
+ 11  |    12      |   {ø}      |    {ø}   |
+ 12  |   {ø}      |   {ø}      |     a    |
+ 
+ 3b)
+ in[i] = gen[i] ∪ (out[i] \ kill[i]) (1)
+out[i] = U in[j]
+    jcsucc[i]
+ 
+ 
+  i  |  out[i]  |  in[i]   |                i   |  out[i]   |   in[i]  |
+ ===========================              =============================
+ 1   |    a,b   |    a,b   |                1   |    a,b   |    a,b    |
+ 2   |    a,b   |    a,b   |                2   |    a,b   |    a,b    |
+ 3   |    a,b   |    a,b   |                3   |    a,b   |    a,b    |      
+ 4   |    b,t   |    a,b   |                4   |    b,t   |    a,b    |      
+ 5   |    a,t   |    b,t   |                5   |    a,t   |    b,t    |      
+ 6   |    a,b   |    a,t   |                6   |    a,b   |    a,t    |      
+ 7   |    a,b   |    a,b   |                7   |    a,b   |    a,b    |      
+ 8   |   a,b,z  |    a,b   |                8   |   a,b,z  |    a,b    |      
+ 9   |   a,b,z  |   a,b,z  |                9   |   a,b,z  |   a,b,z   |      
+ 10  |    a     |   a,b,z  |               10   |    a     |   a,b,z   |      
+ 11  |    a     |    a     |               11   |    a     |    a      |      
+ 12  |   {ø}    |    a     |               12   |    a     |    a      |      
+ 
+ 3c)
+ |  left-hand side  |  interferes with   |
+ =========================================
+ |        a         |      b,t,z         |
+ |        b         |      a,t,z         |
+ |        t         |      a,b           |
+ |        z         |      a,b           |
+ 
+            t
+          /   \
+         /     \
+        a ----- b
+         \     /
+          \   /
+            z
+
+3d)
+          (rød)
+            t
+          /   \
+         /     \
+  (blå) a ----- b (grøn)
+         \     /
+          \   /
+            z
+          (rød)
+    
+3e)
+
+Først fjerner man t, og ser om nogle er < 2, hvilket ingen er. Derfor fjerner
+man a derefter, og nu har både b og z kun 1 nabo. Derfor får disse hver sin farve.
+             
+          /   \
+         /     \
+          ----- b (grøn)
+         \     /
+          \   /
+            z
+          (rød)
+          
+a har tre nabo'er, og vi markerer derfor denne som "spill". t har kun 1 nabo, som 
+er b, derfor giver vi den samme farve som z:
+
+          (rød)
+            t
+          /   \
+         /     \
+(spill) a ----- b (grøn)
+         \     /
+          \   /
+            z
+          (rød)
