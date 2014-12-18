@@ -45,7 +45,7 @@ t1 := v
 t2 := w
 t3 := t1 + t2
 t4 := 1
-t5 := w + 1
+t5 := t1 + t4
 t6 := CALL _GCD_(t3, t5)
 t7 := 2
 t0 := t6 * t7
@@ -113,13 +113,13 @@ gcd(a,b) {
  3	 |	  4		 |	 {ø}	 |	  {ø}	  |
  4	 |	  5		 |	  t		 |	   a	  |
  5	 |	  6		 |	  a		 |	   b	  |
- 6	 |	  10	 |	  b		 |	   t	  |
+ 6	 |	  7 	 |	  b		 |	   t	  |
  7	 |	  8		 |	 {ø}	 |	  {ø}	  |
  8	 |	  9		 |	  z		 |	  {ø}	  |
- 9	 |	  10	 |	  b		 |	   b	  |
+ 9	 |	  10	 |	  b		 |	  a,b	  |
  10	 |	 11,1	 |	 {ø}	 |	  b,z	  |
  11	 |	  12	 |	 {ø}	 |	  {ø}	  |
- 12	 |	 {ø}	 |	 {ø}	 |	  {ø}	  |
+ 12	 |	 {ø}	 |	 {ø}	 |	   a	  |
  
  3b)
  in[i] = gen[i] ∪ (out[i] \ kill[i]) (1)
@@ -127,45 +127,70 @@ out[i] = U in[j]
 	  jcsucc[i]
  
  
-  i	 |	in[i]	 |	out[i]	 |				 i	 |	in[i]	 |	out[i]	 |
+  i	 |  out[i]	 |	in[i]	 |				  i	 |  out[i]	 |	in[i]	 |
  =============================				 =============================
- 1	 |	a,t,b,z	 |	a,t,b,z	 |				 1	 |	a,t,b,z	 |	a,t,b,z	 |
- 2	 |	a,t,b,z	 | 	a,t,b,z	 |				 2	 |	a,t,b,z	 | 	a,t,b,z	 |
- 3	 |	a,t,b,z	 |	a,t,b,z	 |				 3	 |	a,t,b,z	 |	a,t,b,z	 |
- 4	 |	a,t,b,z	 |	a,t,b,z	 |				 4	 |	a,t,b,z	 |	a,t,b,z	 |
- 5	 |	a,t,b,z	 |	a,t,b,z	 |				 5	 |	a,t,b,z	 |	a,t,b,z	 |
- 6	 |	a,t,b,z	 |	 a,b,z	 |				 6	 |	a,t,b,z	 |	a,t,b,z	 |
- 7	 |	 a,b,z	 |	 a,b,z	 |				 7	 |	a,t,b,z	 |	a,t,b,z	 |
- 8	 |	 a,b,z	 |	 a,b,z	 |				 8	 |	a,t,b,z	 |	a,t,b,z	 |
- 9	 |	 a,b,z	 |	 a,b,z 	 |				 9	 |	a,t,b,z	 |	a,t,b,z	 |
- 10	 |	 a,b,z	 |	  a 	 |				 10	 |	a,t,b,z	 |	a,t,b,z	 |
- 11	 |	  a 	 |	  a 	 |				 11	 |	  a 	 |	  a 	 |
- 12	 |	  a 	 |	 {ø}	 |				 12	 |	  a 	 |	  a 	 |
+ 1	 |    a,b	 |	  a,b	 |				  1	 |    a,b	 |	  a,b	 |
+ 2	 |    a,b	 |	  a,b	 |				  2	 |    a,b	 |	  a,b	 |
+ 3	 |    a,b	 |	  a,b	 |				  3	 |    a,b	 |	  a,b	 |      
+ 4	 |    b,t	 |	  a,b	 |				  4	 |    b,t	 |	  a,b	 |      
+ 5	 |    a,t	 |	  b,t	 |				  5	 |    a,t	 |	  b,t	 |      
+ 6	 |    a,b	 |	  a,t	 |				  6	 |    a,b	 |	  a,t	 |      
+ 7	 |    a,b	 |	  a,b	 |				  7	 |    a,b	 |	  a,b	 |      
+ 8	 |   a,b,z	 |	  a,b	 |				  8	 |   a,b,z	 |	  a,b	 |      
+ 9	 |   a,b,z 	 |	 a,b,z	 |				  9	 |   a,b,z 	 |	 a,b,z	 |      
+ 10	 |    a 	 |	 a,b,z	 |				 10	 |    a 	 |	 a,b,z	 |      
+ 11	 |    a 	 |	  a 	 |				 11	 |    a 	 |	  a 	 |      
+ 12	 |   {ø}	 |	  a 	 |				 12	 |    a 	 |	  a 	 |      
  
  3c)
-  i	 |	left-hand side	 |	interferes with	 |
- =============================================
- 1	 |	  	  a			 |	    t,b,z	 	 |
- 2	 |	      t	 	 	 | 		a,b,z	 	 |
- 3	 |	      b	 	 	 |		a,t,z	 	 |
- 4	 |	      z		 	 |		a,t,b 		 |
+ |	left-hand side	 |	interferes with	 |
+ =========================================
+ |	  	  a			 |	    b,t,z	 	 |
+ |	      b	 	 	 | 		a,t,z	 	 |
+ |	      t	 	 	 |		 a,b	 	 |
+ |	      z		 	 |		 a,b		 |
  
-		   a
-		  /|\
-		 / | \
-		t--|--b
-		 \ | /
-		  \|/
-		   z
+            t
+          /   \
+         /     \
+        a ----- b
+         \     /
+          \   /
+            z
 
 3d)
-		 (rød)
-		   a
-		  /|\
-		 / | \
-  (blå)	t--|--b (grøn)
-		 \ | /
-		  \|/
-		   z
-		(spill)
+          (rød)
+            t
+          /   \
+         /     \
+  (blå) a ----- b (grøn)
+         \     /
+          \   /
+            z
+          (rød)
 		
+3e)
+
+Først fjerner man t, og ser om nogle er < 2, hvilket ingen er. Derfor fjerner
+man a derefter, og nu har både b og z kun 1 nabo. Derfor får disse hver sin farve.
+             
+          /   \
+         /     \
+          ----- b (grøn)
+         \     /
+          \   /
+            z
+          (rød)
+          
+a har tre nabo'er, og vi markerer derfor denne som "spill". t har kun 1 nabo, som 
+er b, derfor giver vi den samme farve som z:
+
+          (rød)
+            t
+          /   \
+         /     \
+(spill) a ----- b (grøn)
+         \     /
+          \   /
+            z
+          (rød)
