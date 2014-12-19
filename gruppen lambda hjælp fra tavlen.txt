@@ -1,0 +1,17 @@
+applyFunArg (lambda(atp, fargs, body, pos), aargs, vtable, place, pos)
+
+1) Create a new tmp.reg
+2) Bind fargs -> args in cauca vtable resulting in a new vtab'
+3) CompileExp (body, vtab', tmp.reg)
+4) MOVE (place, tmp.reg)
+vtable var name -> symble in Fasto
+reg in Mips
+for code gen
+
+
+let a = 5 + 3
+let x = map(fn int(int m) => n + a, iota (10))
+    (for i = 0; i < 10; i++) {
+     tmp = y[i]
+     x[i] = tmp + a
+     }
