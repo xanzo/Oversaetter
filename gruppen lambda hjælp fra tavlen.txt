@@ -11,7 +11,14 @@ for code gen
 
 let a = 5 + 3
 let x = map(fn int(int m) => n + a, iota (10))
+
+
     (for i = 0; i < 10; i++) {
      tmp = y[i]
      x[i] = tmp + a
      }
+     
+     
+ let a = 8 + 5 in
+ let a = x + y in
+ a + 7
