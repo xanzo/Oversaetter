@@ -1,3 +1,52 @@
+OPGAVE 1
+Først deler jeg DFAen ind i 2 grupper:
+G1 = {3}
+G2 = {1,2,4,5,6,7,8}
+Så tester jeg om G2 er konsekvent. G1 består kun af 1, derfor er den konsekvent:
+G2| 0   1
+-------
+1 | G2 G2
+2 | G2 G1
+4 | G1 G2
+5 | G2 G2
+6 | G1 G2
+7 | G2 G2
+8 | G2 G1
+Denne er altså ikke konsekvent, og jeg deler G2 ud i mindre grupper:
+G1 = {3}
+G3 = {1,5,7}
+G4 = {4,6}
+G5 = {2,8}
+Tjekker om G3 er konsekvent:
+G3| 0   1
+-------
+1 | G5 G4
+5 | G5 G4
+7 | G3 G3
+Denne er altså ikke konsekvent, og jeg deler G3 ud i mindre grupper:
+G1 = {3}
+G4 = {1,5}
+G5 = {7}
+G6 = {4,6}
+G7 = {2,8}
+Tjekker om G4 er konsekvent:
+G4| 0   1
+-------
+1 | G7 G6
+5 | G7 G6
+Denne er altså konsekvent. Nu tjekkes G6:
+G6| 0   1
+-------
+4 | G1 G5
+6 | G1 G5
+Denne er altså også konsekvent. Nu tjekkes den sidste gruppe G7:
+G7| 0   1
+-------
+2 | G5 G1
+8 | G5 G1
+Alle er nu konsekvente, og der er skabt en minimal DFA.
+
+
 OPGAVE 2
 Backtracking Automaton
 a)
