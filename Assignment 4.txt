@@ -92,9 +92,30 @@ a1|a2|a3 =
       |          |  | ["",a]
       |          --- 
       |          
-      |    ---- [a,b,ab,ba]   ----    c    ======  ----|
-       -->| s6 | --------->  | s7 |  ---> || s8 |      | ["",b]|
-           ----               ----         ======  <---|
+      |    ---- [a,b,ab,ba]   ----    c    ======
+       -->| s6 | --------->  | s7 |  ---> || s8 |
+           ----               ----         ======
                               ^  |
                               |  | ["",a,b,ab,ba]
                                --
+                               
+b)
+Når man konverterer en NFA til en DFA skal man se på, om der er flere
+veje med det samme symbol, skal disse samles til en vej.
+I dette tilfælde har vi s0 til s1 og s4, som kræver samme symbol. 
+Disse kan altså samles til en vej:
+
+ ----   a     ----    b    ======  ----|
+| s0 | --->  | s1 |  ---> || s2 |      | ["",b]|
+ ----         ----         ======  <---|       
+   |          ^  |
+   |          |  | ["",a]
+   |          --- 
+   |          
+   |    ---- [a,b,ab,ba]   ----    c    ======
+    -->| s3 | --------->  | s4 |  ---> || s5 |
+        ----               ----         ======
+                           ^  |
+                           |  | ["",a,b,ab,ba]
+                            --
+                            
