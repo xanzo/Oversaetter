@@ -1,0 +1,27 @@
+Opgave 3
+a)
+T -> T -> T
+T -> T * T
+T -> int
+Udvider sproget:
+T -> T '->' T
+T -> T * T
+T -> int
+S -> T
+S' -> S$
+
+Follow(S)
+FIRST($) delmængde af Follow(S)
+
+Follow(T)
+FIRST('->' T) delmængde af Follow(T)
+FIRST(* T) delmængde af Follow(T)
+Follow(S) delmængde af Follow(T)
+Follow(T) delmængde af Follow(T)
+
+Follow(S) = Ø
+          = {$}
+          
+Follow(T) = Ø
+          = {'->'}
+          = {'->', *, $}
