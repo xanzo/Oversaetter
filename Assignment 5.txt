@@ -1,3 +1,20 @@
+Opgave 1
+B -> B && B
+B -> B || B
+B -> (B)
+B -> true
+B -> false
+
+B -> B' && B
+B -> B || B'
+B -> B'
+B -> (B)
+B -> true
+B -> false
+
+Opgave 2
+a)
+
 Opgave 3
 a)
 T -> T -> T
