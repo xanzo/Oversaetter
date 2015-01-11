@@ -13,13 +13,66 @@ B -> true
 B -> false
 
 Opgave 2
+E -> E E +
+E -> E E *
+E -> num
 a)
+E -> num E'
+E' -> E + E'
+E' -> E * E'
+E' ->
+
+b)
+E -> num E'
+E' -> E T
+E' ->
+T -> + E'
+T -> * E'
+
+c)
+Nullable(E') da der er tilfældet "E' ->  "
+
+Follow(T) = {+,*}
+Follow(E) = {+,*}
+
+FIRST{num}
+FIRST{num}
+FIRST{}
+FIRST{+}
+FIRST{*}
+
+d)
+LL(1) parse table:
+        num      |     +     |     *
+-----------------------------------------
+E  | E -> num E' |           |
+E' | E' -> E T   | E' ->     | E' ->
+T  |             | T -> + E' | T -> * E'
+
+Implement a Recursive-Descent Parser (pseudocode):
+Går ud fra man skal gøre dette ud fra et lille sprog, som det der er 
+lavet i opgave a) og b). Her går jeg ud fra opgave b)
+function parseE() =
+    if next = num or next = "E'" then
+    parseE(); match("E'")
+    else reportError()
+    
+function parseE'() =
+    if next = "E" or next = "T" then
+    parseE'(); match("T")
+    else reportError()
+    
+function parseT() =
+    if next = "+" or next = "*" or next = "E'" then
+    parseT(); match("E'")
+    else reportError()
 
 Opgave 3
 a)
 T -> T -> T
 T -> T * T
 T -> int
+
 Udvider sproget:
 T -> T '->' T
 T -> T * T
