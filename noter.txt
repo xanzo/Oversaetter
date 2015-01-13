@@ -1,0 +1,22 @@
+Regular expressions
+------------------------------
+se side 2 - 6 i bogen
+
+En streng beskriver et sprog
+(a1-an) = (a1 | a2 ...| an)
+* = nul eller flere
++ = et eller flere
+^ = ikke = (^a) = a er ikke med
+a? = (a|epsilon) = optimalt en streng fra a
+alle tal = (1-9)(0-9)* | 0
+
+associative = (r|s)|t = r|(s|t) = r|s|t
+commutative = s|t = t|s
+idempotent = s|s = s
+s? = s|epsilon
+* er associative = (rs)t = r(st) = rst
+epsilon er neutral = sε = εs = s
+* binder stærkere end | = r(s|t) = rs|rt og (r|s)t = rt|st
+* er uafhængig = (s*)* = s*
+s*s* = s*
+ss* = s+ = s*s
