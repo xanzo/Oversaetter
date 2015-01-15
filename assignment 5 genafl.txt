@@ -1,0 +1,35 @@
+Opgave 1
+B -> B && B
+B -> B || B
+B -> (B)
+B -> true
+B -> false
+
+B -> B' && B
+B -> B || B'
+B -> B'
+B -> (B')
+B' -> true
+B' -> false
+
+Opgave 2
+c)
+Udvider sproget yderligere:
+E -> num E'
+E' -> E T
+E' ->
+T -> + E'
+T -> * E'
+S -> E $
+
+Nullable(E') da der er tilfældet "E' ->  "
+
+E -> num E' = FIRST{num}
+E' -> E T   = FIRST{num}
+E' ->       = FIRST{}
+T -> + E'   = FIRST{+}
+T -> * E'   = FIRST{*}
+S -> E $    = FIRST{num}
+
+Follow(T) = {+,*,$}
+Follow(E) = {+,*,$}
