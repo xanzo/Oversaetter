@@ -1,13 +1,15 @@
-{\rtf1\ansi\ansicpg1252\deff0\deflang1030{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset161 Calibri;}}
-{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang6\ul\b\f0\fs22 Regular expressions\ulnone\b0\par
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1030{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset161 Calibri;}}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\ul\b\f0\fs22\lang6 Regular expressions\ulnone\b0\par
 se side 2 - 6 i bogen\par
 Regular language = sprog der kan beskrives via regular expression.\par
 En streng beskriver et sprog\line (a1-an) = (a1 | a2 ...| an)\line * = nul eller flere\line + = et eller flere\line ^ = ikke = (^a) = a er ikke med\line a? = (a|epsilon) = optimalt en streng fra a\line alle tal = (1-9)(0-9)* | 0\par
-associative = (r|s)|t = r|(s|t) = r|s|t\line commutative = s|t = t|s\line idempotent = s|s = s\line * er associative = (rs)t = r(st) = rst\line epsilon er neutral = s\f1\'e5 = \'e5s = s\line * binder st\f0\'e6rkere end | = r(s|t) = rs|rt og (r|s)t = rt|st\line * er uafh\'e6ngig = (s*)* = s*\line s*s* = s*\line ss* = s+ = s*s\par
+associative = (r|s)|t = r|(s|t) = r|s|t\line commutative = s|t = t|s\line idempotent = s|s = s\line * er associative = (rs)t = r(st) = rst\line epsilon er neutral = s\f1\lang1032\'e5 = \'e5s = s\line * binder st\f0\lang1030\'e6rkere end | = r(s|t) = rs|rt og (r|s)t = rt|st\line * er uafh\'e6ngig = (s*)* = s*\line s*s* = s*\line ss* = s+ = s*s\par
 \ul\b Centext-free grammer\par
-\ulnone\b0 Et sprog = potentielt uendelig lang s\'e6t af strenge.\line Grammar = ragler for et sprog. Gramemr giver struktur til s\'e6tnigner.\line Lexical analysis = hvert enkelt ord om hvert ord er korrekt.\line Syntax analysis = om ord er sat i rigtig r\'e6kkef\'f8lge.\par
+\ulnone\b0 Et sprog = potentielt uendelig lang s\'e6t af strenge.\line Grammar = ragler for et sprog. Gramemr giver struktur til s\'e6tnigner.\line Lexical analysis = hvert enkelt ord om hvert ord er korrekt.\line Syntax analysis = om ord er sat i rigtig r\'e6kkef\'f8lge.\line Semantic error = du forst\'e5r hvad der menes, men skrevet forkert.\par
 S -> aSB\line S ->  epsilon\line B -> Bb\line B -> b\line S => aSB => aaSBB => aaSbB => aaaSBbB => aaa_BbB => aaaBbbB => aaaBbbb => aaabbbb\line Syntax tree til ovenst\'e5ende sprog:\par
-\pard\sa200\sl240\slmult1{\pict\wmetafile8\picw8255\pich4048\picwgoal4680\pichgoal2295 
+
+\pard\sa200\sl240\slmult1{\pict{\*\picprop}\wmetafile8\picw8255\pich4048\picwgoal4680\pichgoal2295 
 010009000003ec1701000000d61701000000050000000b0200000000050000000c02d00f3f20d6
 170100430f2000cc0000009900380100000000d00f3f2000000000280000003801000099000000
 0100180000000000682f0200c40e0000c40e00000000000000000000ffffffffffffffffffffff
@@ -3684,9 +3686,11 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffff030000000000
 }\par
+
 \pard\sa200\sl276\slmult1 E -> E + E | E - E\line E -> E * E | E / E\line E -> a | (E)\line Problem: a - a - a kan ikke l\'f8ses da man ik ved om det er left- eller rightassociative. fixed left-associative: (a - a) - a.\par
 left associative = (x + y) + z ELLER E -> E + E' | E - E'\line right associtive = x + (y + z) ELLER E -> E' * E | E' / E\line non-associative = x + y + z er ikke tilladt\line associative = hvis (x + y) + z OG x + (y + z) vil give det samme\par
-\pard\sa200\sl240\slmult1{\pict\wmetafile8\picw10504\pich1693\picwgoal5955\pichgoal960 
+
+\pard\sa200\sl240\slmult1{\pict{\*\picprop}\wmetafile8\picw10504\pich1693\picwgoal5955\pichgoal960 
 010009000003389500000000229500000000050000000b0200000000050000000c029d06082922
 950000430f2000cc00000040008d01000000009d06082900000000280000008d01000040000000
 0100180000000000002a0100c40e0000c40e00000000000000000000ffffffffffffffffffffff
@@ -5647,8 +5651,10 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00030000000000
 }\par
+
 \pard\sa200\sl276\slmult1\ul\b Interpretation intuition: solving First-Grade math\ulnone\b0\par
-\pard\sa200\sl240\slmult1{\pict\wmetafile8\picw11192\pich2328\picwgoal6345\pichgoal1320 
+
+\pard\sa200\sl240\slmult1{\pict{\*\picprop}\wmetafile8\picw11192\pich2328\picwgoal6345\pichgoal1320 
 010009000003d8da00000000c2da00000000050000000b0200000000050000000c021809b82bc2
 da0000430f2000cc0000005800a701000000001809b82b0000000028000000a701000058000000
 010018000000000040b50100c40e0000c40e00000000000000000000cfd7cccfd7cccfd7cccfd7
@@ -8525,7 +8531,8 @@ cccfd7cccfd7cccfd7cccfd7cccfd7cccfd7cccfd7cccfd7cccfd7cccfd7cc0000000300000000
 00
 }\par
 \ul\b Interpreting Expreseeions\ulnone\b0\par
-\pard\sa200\sl276\slmult1 Exp1 + Exp2:  v1 = EvalExp(exp1, vtable, ftable). v2 = EvalExp(exp2, vtable, ftable). if (v1 and v2 are integers) then (v1 + v2) eler Error().\line If Exp1 then Exp2 elske Exp3: v1 = (EvalExp(Exp1, vtable, ftable). if (v1 is a boolean value) then if (v1 == true) then EvalExp(Exp2, vtable, ftable) else EvalExp(Exp3, vtable, ftable) else Error().\line{\pict\wmetafile8\picw10266\pich5159\picwgoal5820\pichgoal2925 
+
+\pard\sa200\sl276\slmult1 Exp1 + Exp2:  v1 = EvalExp(exp1, vtable, ftable). v2 = EvalExp(exp2, vtable, ftable). if (v1 and v2 are integers) then (v1 + v2) eler Error().\line If Exp1 then Exp2 elske Exp3: v1 = (EvalExp(Exp1, vtable, ftable). if (v1 is a boolean value) then if (v1 == true) then EvalExp(Exp2, vtable, ftable) else EvalExp(Exp3, vtable, ftable) else Error().\line{\pict{\*\picprop}\wmetafile8\picw10266\pich5159\picwgoal5820\pichgoal2925 
 0100090000038abb0100000074bb01000000050000000b0200000000050000000c0227141a2874
 bb0100430f2000cc000000c30084010000000027141a28000000002800000084010000c3000000
 0100180000000000a4760300c40e0000c40e00000000000000000000ffffffffffffffffffffff
@@ -14350,7 +14357,8 @@ d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d72727272727
 272727272727272727272727272727272727272727272727272727272727272727272727272727
 27272727272727272727272727272727272727272727272727272727030000000000
 }\line\ul\b Call-by-value/reference/value result\ulnone\b0\par
-\pard\sa200\sl240\slmult1{\pict\wmetafile8\picw11218\pich5583\picwgoal6360\pichgoal3165 
+
+\pard\sa200\sl240\slmult1{\pict{\*\picprop}\wmetafile8\picw11218\pich5583\picwgoal6360\pichgoal3165 
 0100090000036c0c02000000560c02000000050000000b0200000000050000000c02cf15d22b56
 0c0200430f2000cc000000d300a80100000000cf15d22b0000000028000000a8010000d3000000
 010018000000000068180400c40e0000c40e00000000000000000000fffffffffffff1f3f0d1d9
@@ -21238,7 +21246,7 @@ c53d5d323d5d323d5d323d5d323d5d323d5d323d5d323d5d323d5d323d5d323d5d323d5d323d5d
 323d5d323d5d323d5d323d5d323d5d323d5d323d5d32030000000000
 }\par
 \ul\b Scoping\ulnone\b0\par
-A scope is the context in a program within which a named variable can be used, a name is bound to the variables storage. Outside the variables scope, the name does not refer to that variable.\line{\pict\wmetafile8\picw11562\pich3519\picwgoal6555\pichgoal1995 
+A scope is the context in a program within which a named variable can be used, a name is bound to the variables storage. Outside the variables scope, the name does not refer to that variable.\line{\pict{\*\picprop}\wmetafile8\picw11562\pich3519\picwgoal6555\pichgoal1995 
 010009000003085501000000f25401000000050000000b0200000000050000000c02bf0d2a2df2
 540100430f2000cc0000008500b50100000000bf0d2a2d0000000028000000b501000085000000
 0100180000000000a0a90200c40e0000c40e00000000000000000000ffffffffffffffffffffff
@@ -25718,10 +25726,12 @@ b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6
 b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7bbc6b7aeb6ab8080809191910003
 0000000000
 }\par
+
 \pard\sa200\sl276\slmult1\ul\b Type system\ulnone\b0\par
 Static = Type checking is performed before running the program.\line Dynamic = Type checking is performed while running the program\line Strong = All type errors are caught.\line Weak = Operations may be performed on values of wrong types.\par
 \ul\b Structual Equivalence\ulnone\b0\par
-MGU = most-general unifer:\line\pard\sa200\sl240\slmult1{\pict\wmetafile8\picw10848\pich5398\picwgoal6150\pichgoal3060 
+
+\pard\sa200\sl240\slmult1 MGU = most-general unifer:\line{\pict{\*\picprop}\wmetafile8\picw10848\pich5398\picwgoal6150\pichgoal3060 
 01000900000318eb0100000002eb01000000050000000b0200000000050000000c021615602a02
 eb0100430f2000cc000000cc009a01000000001615602a00000000280000009a010000cc000000
 0100180000000000c0d50300c40e0000c40e00000000000000000000ffffffffffffffffffffff
@@ -32172,6 +32182,7 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00
 00030000000000
 }\line\ul\b ftable and vtable\ulnone\b0\par
 vtable binds variable names to their types, e.g. int, char, bool, arrays e.g. [[[int]]].\line ftable binds function names to their types. The type of a function is written (t1,..,tn) -> t0, where t1,...,tn are the argument types and t0 is the result type.\par
+
 \pard\sa200\sl276\slmult1\ul\b Machine code\ulnone\b0\par
 Machine code has a limited number of registers.\line\par
 }
